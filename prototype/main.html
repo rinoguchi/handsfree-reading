@@ -1,0 +1,91 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script src="https://code.jquery.com/jquery-2.1.1-rc2.js" charset="UTF-8"></script>
+  <script src="./js/operator.js" charset="UTF-8"></script>
+  <script src="./js/voice_commander.js" charset="UTF-8"></script>
+  <script src="./js/gesture_commander.js" charset="UTF-8"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      var vCommander = new VoiceCommander();
+      vCommander.setOperator(new Operator());
+      var gCommander = new GestureCommander();
+      gCommander.setOperator(new Operator());
+
+      $('#voice_start').click(function() {
+        vCommander.start();
+      });
+      $('#voice_stop').click(function() {
+        vCommander.stop();
+      });
+      $('#gesture_start').click(function() {
+        gCommander.start();
+      });
+      $('#gesture_stop').click(function() {
+        gCommander.stop();
+      });
+    });
+  </script>
+</head>
+<body>
+  <table>
+    <tr>
+      <td>音声認識</td>
+      <td><input type="button" id="voice_start" value="start"/></td>
+      <td><input type="button" id="voice_stop" value="stop"/></td>
+    </tr>
+    <tr>
+      <td>ジェスチャー</td>
+      <td><input type="button" id="gesture_start" value="start"/></td>
+      <td><input type="button" id="gesture_stop" value="stop"/></td>
+    </tr>
+  </table>
+  <br/>
+  <div id="1">一番目のテキストです</div>
+  <div id="2">二番目のテキストです</div>
+  <div id="3">三番目のテキストです</div>
+  <br/>
+  <div id="ingredients_list">
+    <div class="ingredient ingredient_22431387 ingredient_row">
+      <div class="ingredient_name"><span class="name"><a class="cookdict_ingredient_link" href="/dict/%E3%82%82%E3%82%84%E3%81%97" title="もやしのコツと使い方">もやし</a></span></div>
+      <div class="ingredient_quantity amount">１袋(200ｇ)</div>
+    </div>
+    <div class="ingredient ingredient_22431388 ingredient_row">
+      <div class="ingredient_name"><span class="name">豚挽き肉</span></div>
+      <div class="ingredient_quantity amount">１５０ｇ</div>
+    </div>
+  </div>
+  <br/>
+  01<br/>
+  02<br/>
+  03<br/>
+  04<br/>
+  05<br/>
+  06<br/>
+  07<br/>
+  08<br/>
+  09<br/>
+  10<br/>
+  11<br/>
+  12<br/>
+  13<br/>
+  14<br/>
+  15<br/>
+  16<br/>
+  17<br/>
+  18<br/>
+  19<br/>
+  20<br/>
+  21<br/>
+  22<br/>
+  23<br/>
+  24<br/>
+  25<br/>
+  26<br/>
+  27<br/>
+  28<br/>
+  29<br/>
+  30<br/>
+
+</body>
+</html>
