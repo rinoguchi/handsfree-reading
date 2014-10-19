@@ -32,6 +32,13 @@ function initializeWebcamSwiper() {
 
 		// Wait for the video element to initialize
 		videoElement.addEventListener("loadeddata", startSwipeRecogntion);
+
+        // Init webcam canvas
+        webcamCanvas = document.getElementById("webcamCanvas");
+        webcamCanvasCtx = webcamCanvas.getContext("2d");
+        webcamCanvas.width = parseInt(webcamCanvas.style.width);
+        webcamCanvas.height = parseInt(webcamCanvas.style.height);
+
 	}, function(err) {
 		console('Something went wrong in getUserMedia');
 	});
@@ -73,6 +80,9 @@ function startSwipeRecogntion() {
 	window.webcamSwiperInterval = setInterval(analyzeCurrentFrame, 1000/28);
 
 	function analyzeCurrentFrame() {
+        // Draw webcam canvas
+        webcamCanvasCtx.drawImage(videoElement, 0, 0, webcamCanvas.width, webcamCanvas.height);
+
 		// Start the timer
 		var startTime = new Date().getTime();
 
@@ -213,4 +223,5 @@ function destroyWebcamSwiper() {
 		window.webcamSwiperStream.stop();
 		window.webcamSwiperStream = undefined;
 	}
+    webcamCanvasCtx.clearRect(0, 0, webcamCanvas.width, webcamCanvas.height);
 }
