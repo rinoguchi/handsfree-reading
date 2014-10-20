@@ -39,7 +39,7 @@ var VoiceCommander = (function() {
  
   recognition.lang = "ja-JP";
   recognition.continuous = true;
-  //recognition.interimResults = true;
+  recognition.interimResults = true;
   recognition.onend = function(event) {
     log(event);
     recognizing = false;
