@@ -4,8 +4,8 @@ var VoiceCommander = function(options) {
 	// オペレータをセット
 	self.operator;
 	self.setOperator = function(operator) {
-	self.operator = operator;
-	console.log("VoiceCommander setOperator!!");
+		self.operator = operator;
+		console.log("VoiceCommander setOperator!!");
 	};
 
 	// 音声認識を開始

@@ -21,7 +21,7 @@ jQuery(document).ready(function(){
 
 		jQuery('#' + options.direction).attr('checked', 'checked');
 		jQuery('#saveDirection').click(function() {
-			options.language = jQuery('input[name="direction"]:checked').val();
+			options.direction = jQuery('input[name="direction"]:checked').val();
 			save(options);
 		});
 

@@ -13,7 +13,7 @@ var sections = [
 
 // 以下はchrome extension化しても変更無し
 var Operator = function() {
-  var self = this;
+	var self = this;
 
 	// セクションを読み上げ
 	// @param sectionName : 'section_0'〜'section_9'のいずれかの値
@@ -27,7 +27,7 @@ var Operator = function() {
 			}
 		});
 		console.log('readSection text=' + text);
-		self._read(text);
+		_read(text);
 	};
 
 	// 上スクロール
@@ -46,7 +46,7 @@ var Operator = function() {
 
 	// 音声読み上げ
 	// @param text : 読み上げる文章
-	self._read = function(text) {
+	var _read = function(text) {
 		if (!'SpeechSynthesisUtterance' in window) {
 			alert('Web Speech API には未対応です。');
 			return;
