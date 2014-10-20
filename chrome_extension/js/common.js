@@ -3,10 +3,9 @@ function save(opts) {
 }
 
 function load(callback) {
-	var options = {'modes': ['speech'], 'language': 'ja-JP', 'direction': 'horizontal'};
 	// 非同期実行
 	chrome.storage.local.get('options', function(result) {
-		options = result.options;
+		options = result.options || {'modes': ['speech'], 'language': 'ja-JP', 'direction': 'horizontal'};
 		callback(options);
 	});
 
