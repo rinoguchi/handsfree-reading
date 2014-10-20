@@ -1,4 +1,4 @@
-var GestureCommander = function() {
+var GestureCommander = function(options) {
   var self = this;
 
   // オペレータをセット

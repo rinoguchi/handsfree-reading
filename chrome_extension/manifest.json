@@ -9,7 +9,8 @@
 	"permissions": [
 		"tabs",
 		"http://*/*",
-		"https://*/*"
+		"https://*/*",
+		"storage"
 	],
 
 	"options_page": "options.html",
@@ -27,7 +28,14 @@
 	"content_scripts": [
 		{
 			"matches": ["http://*/*", "https://*/*"],
-			"js": ["js/jquery-2.1.1.min.js", "js/common.js", "js/voice_commander.js", "js/gesture_commander.js", "js/operator.js", "js/operator.js", "js/content_script.js"]
+			"js": [
+				"js/jquery-2.1.1.min.js",
+				"js/common.js",
+				"js/voice_commander.js",
+				"js/gesture_commander.js",
+				"js/operator.js",
+				"js/operator.js",
+				"js/content_script.js"]
 		}
 	],
 
