@@ -66,18 +66,18 @@ var VoiceCommander = (function() {
   }
   
   var commands = [
-      { texts: ["上","うえ","アップ"],   onMatch: function() { operator.scrollUp(100);    } }
+      { texts: ["上","うえ","アップ"],     onMatch: function() { operator.scrollUp(100);    } }
     , { texts: ["下","した","ダウン"],   onMatch: function() { operator.scrollDown(100); } }
-    , { texts: ["１","1","一","いち"], onMatch: function() { operator.readSection(1);   } }
-    , { texts: ["2"], onMatch: function() { operator.readSection(2);   } }
-    , { texts: ["3"], onMatch: function() { operator.readSection(3);   } }
-    , { texts: ["4"], onMatch: function() { operator.readSection(4);   } }
-    , { texts: ["5"], onMatch: function() { operator.readSection(5);   } }
-    , { texts: ["6"], onMatch: function() { operator.readSection(6);   } }
-    , { texts: ["7"], onMatch: function() { operator.readSection(7);   } }
-    , { texts: ["8"], onMatch: function() { operator.readSection(8);   } }
-    , { texts: ["9"], onMatch: function() { operator.readSection(9);   } }
-    , { texts: ["10","十"], onMatch: function() { operator.readSection(10);   } }
+    , { texts: ["材料"],                 onMatch: function() { operator.readSection("zairyou");   } }
+    , { texts: ["１","1","一","いち"],   onMatch: function() { operator.readSection("1");   } }
+    , { texts: ["2"], onMatch: function() { operator.readSection("2");   } }
+    , { texts: ["3"], onMatch: function() { operator.readSection("3");   } }
+    , { texts: ["4"], onMatch: function() { operator.readSection("4");   } }
+    , { texts: ["5"], onMatch: function() { operator.readSection("5");   } }
+    , { texts: ["6"], onMatch: function() { operator.readSection("6");   } }
+    , { texts: ["7"], onMatch: function() { operator.readSection("7");   } }
+    , { texts: ["8"], onMatch: function() { operator.readSection("8");   } }
+    , { texts: ["9"], onMatch: function() { operator.readSection("9");   } }
   ];
  
   // 検出した単語にマッチするコマンドがあれば実行する
