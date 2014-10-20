@@ -75,6 +75,9 @@ function startSwipeRecogntion() {
 	var lightLevel = 0;
 	var scanCount = 0;
 	var frameAnalysisTime = 36;
+    var motionDirection = "vertical";
+    // var motionDirection = "horizontal";
+    // var motionDirection = document.getElementById("gesture_direction").value;
 
 	// every ?th of a second, sample the video stream
 	window.webcamSwiperInterval = setInterval(analyzeCurrentFrame, 1000/28);
@@ -121,7 +124,7 @@ function startSwipeRecogntion() {
 		}
 
 		// Map the pixels that are changing
-		var currentWeight = getMotionWeight(previousImageData, currentImageData);
+		var currentWeight = getMotionWeight(previousImageData, currentImageData, motionDirection);
 
 		// If we aren't actively looking for a spike the opposite direction, check if we should start
 		if (!isActive) {
@@ -142,14 +145,14 @@ function startSwipeRecogntion() {
 				if (originalWeight > 0) {
 					if (currentWeight < -FRAME_THRESHOLD) {
 						fireSwipeEvent("webcamSwipeRight");
-                        // console.log('swipe right');  // debug
+                        console.log("right or down");  // debug
 						isActive = false;
 					}
 				}
 				else {
 					if (currentWeight > FRAME_THRESHOLD) {
 						fireSwipeEvent("webcamSwipeLeft");
-                        // console.log('swipe left');  // debug
+                        console.log("left or up");  // debug
 						isActive = false;
 					}
 				}
@@ -167,14 +170,18 @@ function startSwipeRecogntion() {
 		document.getElementsByTagName("body")[0].dispatchEvent(swipeLeftEvent);
 	}
 
-	function getMotionWeight (previous, current) {
+	function getMotionWeight (previous, current, motionDirection) {
 		var motionWeight = 0;
 		var previousData = previous.data;
 		var currentData = current.data;
 		var dataLength = previousData.length;
 		for (var i = 0; i < dataLength; i += 4) {
 			if (Math.abs(previousData[i] - currentData[i]) > PIXEL_CHANGE_THRESHOLD) {
-				motionWeight += ((i / 4) % canvasWidth) - (canvasWidth / 2);
+                if (motionDirection == "vertical") {
+				    motionWeight += ((i / 4) % canvasHeight) - (canvasHeight / 2);
+                } else {  // horizonatl
+				    motionWeight += ((i / 4) % canvasWidth) - (canvasWidth / 2);
+                }
 			}
 		}
 		return motionWeight;
