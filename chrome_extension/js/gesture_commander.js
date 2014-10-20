@@ -1,15 +1,15 @@
 var GestureCommander = function(options) {
   var self = this;
 
-  $("body").bind("webcamSwipeLeft", next);
-  $("body").bind("webcamSwipeRight", previous);
+  document.getElementsByTagName("body")[0].onWebcamSwipeLeft = next;
+  document.getElementsByTagName("body")[0].onWebcamSwipeRight = previous;
 
   function next() {
-    console.log("goto next page");
+    operator.rightAction();
   }
 
   function previous() {
-    console.log("goto previous page");
+    operator.leftAction();
   }
 
   // オペレータをセット

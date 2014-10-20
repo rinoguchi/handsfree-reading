@@ -34,10 +34,19 @@ function initializeWebcamSwiper() {
 		videoElement.addEventListener("loadeddata", startSwipeRecogntion);
 
         // Init webcam canvas
-        webcamCanvas = document.getElementById("webcamCanvas");
+        webcamCanvas = document.createElement("canvas");
+        webcamCanvas.id = "webcamCanvas";
+        webcamCanvas.width = 160;
+        webcamCanvas.heght = 120;
+        webcamCanvas.style.zIndex = "1001";
+        webcamCanvas.style.position = "fixed";
+        webcamCanvas.style.top = "10px";
+        webcamCanvas.style.right = "10px";
+        webcamCanvas.style.opacity = 0.5;
+
+        document.body.appendChild(webcamCanvas);
+
         webcamCanvasCtx = webcamCanvas.getContext("2d");
-        webcamCanvas.width = parseInt(webcamCanvas.style.width);
-        webcamCanvas.height = parseInt(webcamCanvas.style.height);
 
 	}, function(err) {
 		console('Something went wrong in getUserMedia');
