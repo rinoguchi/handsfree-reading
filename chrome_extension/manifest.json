@@ -14,20 +14,22 @@
 
 	"options_page": "options.html",
 
-	// "background": {
-	// 	"scripts": [
-	// 		"js/jquery-2.1.1.min.js",
-	// 		"js/common.js",
-	// 		"js/voice_commander.js",
-	// 		"js/gesture_commander.js",
-	// 		"js/operator.js",
-	// 		"js/background.js"]
-	// },
+	"background": {
+	 	"scripts": ["js/background.js"]
+	 },
 
 	"content_scripts": [
 		{
 			"matches": ["http://*/*", "https://*/*"],
-			"js": ["js/jquery-2.1.1.min.js", "js/common.js", "js/voice_commander.js", "js/gesture_commander.js", "js/operator.js", "js/operator.js", "js/content_script.js"]
+			"js": [
+				"js/jquery-2.1.1.min.js"
+				, "js/common.js"
+				, "js/voice_commander.js"
+				, "js/webcam-swiper-0.1.js"
+				, "js/gesture_commander.js"
+				, "js/operator.js"
+				, "js/content_script.js"
+			]
 		}
 	],
 

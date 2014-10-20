@@ -1,15 +1,13 @@
-var options = load();
-
-jQuery.each(options.modes, function(i, mode) {
-	console.log("options.modes:" + mode);
-	if (mode === 'speech') {
-		var commander = new VoiceCommander();
-		commander.setOperator(new Operator());
-		commander.start();
-	}
-	if (mode === 'gesture') {
-		var commander = new GestureCommander();
-		commander.setOperator(new Operator());
-		commander.start();
-	}
-});
+var commander = function() {
+  var operator = new Operator();
+  
+  function stop() {
+    new VoiceCommander().setOperator(operator).stop()
+    new GestureCommander().setOperator(operator).stop()
+  }
+  
+  function start() {
+    new VoiceCommander().setOperator(operator).start()
+    new GestureCommander().setOperator(operator).start()
+  }
+};
