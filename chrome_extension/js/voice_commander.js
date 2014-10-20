@@ -11,7 +11,8 @@ var VoiceCommander = function() {
   // 音声認識を開始
   self.start = function() {
     console.log("VoiceCommander start!!");
-    self.operator.readSection('command_1');
+    //self.operator.readSection('1');
+    //self.operator.scrollDown(500);
   };
 
   // 音声認識を停止

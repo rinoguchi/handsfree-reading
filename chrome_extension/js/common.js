@@ -5,5 +5,5 @@ function save(opts) {
 function load() {
 	return JSON.parse(
 		localStorage.options || 
-		'{"mode": "speech", "language": "ja-JP"}');
+		'{"modes": ["speech"], "language": "ja-JP", "direction": "horizontal"}');
 }

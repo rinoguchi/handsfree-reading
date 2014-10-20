@@ -1,16 +1,25 @@
-var options = load();
-
-$(document).ready(function(){
-
-	$('#' + options.mode).attr('checked', 'checked');
-	$('#saveMode').click(function() {
-		options.mode = $('input[name="mode"]:checked').val();
+jQuery(document).ready(function(){
+	var options = load();
+	jQuery.each(options.modes, function(i, mode) {
+		jQuery('#' + mode).attr('checked', 'checked');
+	});
+	jQuery('#saveModes').click(function() {
+		options.modes = [];
+		jQuery.each(jQuery('input[name="modes"]:checked'), function(i, mode) {
+			options.modes.push($(mode).val());
+		});
 		save(options);
 	});
 
-	$('#' + options.language).attr('checked', 'checked');
-	$('#saveLanguage').click(function() {
-		options.language = $('input[name="language"]:checked').val();
+	jQuery('#' + options.language).attr('checked', 'checked');
+	jQuery('#saveLanguage').click(function() {
+		options.language = jQuery('input[name="language"]:checked').val();
+		save(options);
+	});
+
+	jQuery('#' + options.direction).attr('checked', 'checked');
+	jQuery('#saveDirection').click(function() {
+		options.language = jQuery('input[name="direction"]:checked').val();
 		save(options);
 	});
 
