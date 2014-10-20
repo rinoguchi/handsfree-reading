@@ -1,0 +1,31 @@
+{
+	"manifest_version": 2,
+
+	"name": "Handsfree Reading",
+	"description": "Read specified page content in handsfree",
+
+	"version": "0.1",
+
+	"permissions": [
+		"tabs",
+		"http://*/*",
+		"https://*/*"
+	],
+
+	"options_page": "options.html",
+
+	"background": {
+		"scripts": [
+			"js/jquery-2.1.1.min.js",
+			"js/common.js",
+			"js/voice_commander.js",
+			"js/gesture_commander.js",
+			"js/operator.js",
+			"js/background.js"]
+	},
+
+	"browser_action": {
+		"default_icon": "image/icon.png",
+		"default_title": "Handsfree Reading"
+	}
+}
