@@ -1,5 +1,5 @@
 function save(opts) {
-	localStorage.options = JSON.stringfy(opts);
+	localStorage.options = JSON.stringify(opts);
 }
 
 function load() {
