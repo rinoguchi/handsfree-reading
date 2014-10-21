@@ -1,5 +1,5 @@
 load(function(options) {
-	jQuery.each(options.modes, function(i, mode) {
+	options.modes.forEach(function(mode, i) {
 		console.log("options.modes:" + mode);
 		if (mode === 'speech') {
 			var commander = new VoiceCommander(options);
