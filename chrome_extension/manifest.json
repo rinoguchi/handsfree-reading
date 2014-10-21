@@ -29,7 +29,6 @@
 		{
 			"matches": ["http://*/*", "https://*/*"],
 			"js": [
-				"js/jquery-2.1.1.min.js",
 				"js/common.js",
 				"js/voice_commander.js",
 				"js/gesture_commander.js",
