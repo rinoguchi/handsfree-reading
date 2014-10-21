@@ -1,34 +1,50 @@
-var GestureCommander = function(options) {
-  var self = this;
+if (window.HandsFree) {
+  window.HandsFree.gesture = (function() {
 
-  document.getElementsByTagName("body")[0].onWebcamSwipeLeft = next;
-  document.getElementsByTagName("body")[0].onWebcamSwipeRight = previous;
+	  var operator;
+		var direction;
 
-  function next() {
-    operator.rightAction();
-  }
+	  function rightOrDown() {
+	    if (direction === 'horizontal') {
+				operator.rightAction();
+			} else {
+				operator.scrollDown(300);
+			}
+	  }
 
-  function previous() {
-    operator.leftAction();
-  }
+	  function leftOrUp() {
+	    if (direction === 'horizontal') {
+				operator.leftAction();
+			} else {
+				operator.scrollUp(300);
+			}
+	  }
 
-  // オペレータをセット
-  self.operator;
-  self.setOperator = function(operator) {
-    self.operator = operator;
-    console.log("GestureCommander setOperator!!");
-  };
+	  // オペレータをセット
+		var setOperator = function(_operator) {
+	    operator = _operator;
+	    console.log("GestureCommander setOperator!!");
+	  };
 
-  // ジェスチャー認識を開始
-  self.start = function() {
-    console.log("GestureCommander start!!");
-    window.initializeWebcamSwiper();
-  };
+	  // ジェスチャー認識を開始
+	  var start = function() {
+	    console.log("GestureCommander start!!");
+	    window.initializeWebcamSwiper();
+	  };
 
-  // ジェスチャー認識を停止
-  self.stop = function() {
-    console.log("GestureCommander stop!!");
-    window.destroyWebcamSwiper();
-  };
+	  // ジェスチャー認識を停止
+	  var stop = function() {
+	    console.log("GestureCommander stop!!");
+	    window.destroyWebcamSwiper();
+	  };
 
-};
+		var init = function (options) {
+	    console.log("GestureCommander option: " + options.direction);
+			direction = options.direction;
+		  document.getElementsByTagName("body")[0].addEventListener("webcamSwipeLeft", leftOrUp, false);
+		  document.getElementsByTagName("body")[0].addEventListener("webcamSwipeRight", rightOrDown, false);
+		}
+
+  	return { start: start, stop: stop, setOperator: setOperator, init: init }
+	})();
+}

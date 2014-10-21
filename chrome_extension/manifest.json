@@ -18,6 +18,7 @@
 	"content_scripts": [{
 		"matches": ["http://*/*", "https://*/*"],
 		"js": [
+			"js/common.js",
 			"js/voice_commander.js",
 			"js/webcam-swiper-0.1.js",
 			"js/gesture_commander.js",

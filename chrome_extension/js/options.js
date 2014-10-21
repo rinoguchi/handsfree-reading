@@ -1,6 +1,6 @@
 jQuery(document).ready(function(){
 
-	load(function(options) {
+	window.HandsFree.load(function(options) {
 
 		jQuery.each(options.modes, function(i, mode) {
 			jQuery('#' + mode).attr('checked', 'checked');
@@ -10,19 +10,19 @@ jQuery(document).ready(function(){
 			jQuery.each(jQuery('input[name="modes"]:checked'), function(i, mode) {
 				options.modes.push($(mode).val());
 			});
-			save(options);
+			window.HandsFree.save(options);
 		});
 
 		jQuery('#' + options.language).attr('checked', 'checked');
 		jQuery('#saveLanguage').click(function() {
 			options.language = jQuery('input[name="language"]:checked').val();
-			save(options);
+			window.HandsFree.save(options);
 		});
 
 		jQuery('#' + options.direction).attr('checked', 'checked');
 		jQuery('#saveDirection').click(function() {
-			options.language = jQuery('input[name="direction"]:checked').val();
-			save(options);
+			options.direction = jQuery('input[name="direction"]:checked').val();
+			window.HandsFree.save(options);
 		});
 
 	});
