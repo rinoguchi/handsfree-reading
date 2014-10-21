@@ -8,13 +8,18 @@
 </head>
 <body>
   <h1>Recognition Mode</h1>
-  <input type="radio" name="mode" value="speech" id="speech"> Speech
-  <input type="radio" name="mode" value="gesture" id="gesture"> Gesture
-  <input type="button" id="saveMode" value="save">
+  <input type="checkbox" name="modes" value="speech" id="speech"> Speech
+  <input type="checkbox" name="modes" value="gesture" id="gesture"> Gesture
+  <input type="button" id="saveModes" value="save">
   <br/><br/>
   <h1>Speaking Language</h1>
   <input type="radio" name="language" value="ja-JP" id="ja-JP"> Japanese
   <input type="radio" name="language" value="en-US" id="en-US"> English
   <input type="button" id="saveLanguage" value="save">
+  <br/><br/>
+  <h1>Gesture Direction</h1>
+  <input type="radio" name="direction" value="horizontal" id="horizontal"> Horizontal
+  <input type="radio" name="direction" value="vertical" id="vertical"> Vertical
+  <input type="button" id="saveDirection" value="save">
 </body>
 </html>
