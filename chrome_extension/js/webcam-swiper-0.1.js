@@ -34,10 +34,19 @@ function initializeWebcamSwiper() {
 		videoElement.addEventListener("loadeddata", startSwipeRecogntion);
 
         // Init webcam canvas
-        webcamCanvas = document.getElementById("webcamCanvas");
+        webcamCanvas = document.createElement("canvas");
+        webcamCanvas.id = "webcamCanvas";
+        webcamCanvas.width = 160;
+        webcamCanvas.heght = 120;
+        webcamCanvas.style.zIndex = "1001";
+        webcamCanvas.style.position = "fixed";
+        webcamCanvas.style.top = "10px";
+        webcamCanvas.style.right = "10px";
+        webcamCanvas.style.opacity = 0.5;
+
+        document.body.appendChild(webcamCanvas);
+
         webcamCanvasCtx = webcamCanvas.getContext("2d");
-        webcamCanvas.width = parseInt(webcamCanvas.style.width);
-        webcamCanvas.height = parseInt(webcamCanvas.style.height);
 
 	}, function(err) {
 		console('Something went wrong in getUserMedia');
@@ -145,14 +154,12 @@ function startSwipeRecogntion() {
 				if (originalWeight > 0) {
 					if (currentWeight < -FRAME_THRESHOLD) {
 						fireSwipeEvent("webcamSwipeRight");
-                        console.log("right or down");  // debug
 						isActive = false;
 					}
 				}
 				else {
 					if (currentWeight > FRAME_THRESHOLD) {
 						fireSwipeEvent("webcamSwipeLeft");
-                        console.log("left or up");  // debug
 						isActive = false;
 					}
 				}
@@ -165,9 +172,9 @@ function startSwipeRecogntion() {
 	}
 
 	function fireSwipeEvent(eventName) {
-		var swipeLeftEvent = document.createEvent("UIEvents");
-		swipeLeftEvent.initEvent(eventName, false, false);
-		document.getElementsByTagName("body")[0].dispatchEvent(swipeLeftEvent);
+		var e = document.createEvent("UIEvents");
+		e.initEvent(eventName, false, false);
+		document.getElementsByTagName("body")[0].dispatchEvent(e);
 	}
 
 	function getMotionWeight (previous, current, motionDirection) {

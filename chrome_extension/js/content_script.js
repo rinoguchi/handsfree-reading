@@ -1,15 +1,33 @@
-load(function(options) {
-	options.modes.forEach(function(mode, i) {
-		console.log("options.modes:" + mode);
-		if (mode === 'speech') {
-			var commander = new VoiceCommander(options);
-			commander.setOperator(new Operator());
-			commander.start();
-		}
-		if (mode === 'gesture') {
-			var commander = new GestureCommander(options);
-			commander.setOperator(new Operator());
-			commander.start();
-		}
-	});
-});
+if (window.HandsFree) {
+	(function($) {
+
+		$.start = function () {
+			$.load(function(options) {
+				console.log(options);
+				for (var i=0; i< options.modes.length; i++) {
+		      var mode = options.modes[i];
+		      if (mode === 'speech') {
+						$.voice.init(options);
+					  $.voice.setOperator($.operator);
+					  $.voice.start();
+		      } else if (mode === 'gesture') {
+					  $.gesture.init(options);
+					  $.gesture.setOperator($.operator);
+					  $.gesture.start();
+		      }
+		    }
+
+			});
+		};
+
+  
+  	$.stop = function() {
+    	$.voice.stop();
+    	$.gesture.stop();
+  	}
+
+	})(window.HandsFree);
+
+	console.log("HandsFree is initialized.");
+}
+
