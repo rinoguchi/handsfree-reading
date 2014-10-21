@@ -154,14 +154,12 @@ function startSwipeRecogntion() {
 				if (originalWeight > 0) {
 					if (currentWeight < -FRAME_THRESHOLD) {
 						fireSwipeEvent("webcamSwipeRight");
-                        console.log("right or down");  // debug
 						isActive = false;
 					}
 				}
 				else {
 					if (currentWeight > FRAME_THRESHOLD) {
 						fireSwipeEvent("webcamSwipeLeft");
-                        console.log("left or up");  // debug
 						isActive = false;
 					}
 				}
@@ -174,9 +172,9 @@ function startSwipeRecogntion() {
 	}
 
 	function fireSwipeEvent(eventName) {
-		var swipeLeftEvent = document.createEvent("UIEvents");
-		swipeLeftEvent.initEvent(eventName, false, false);
-		document.getElementsByTagName("body")[0].dispatchEvent(swipeLeftEvent);
+		var e = document.createEvent("UIEvents");
+		e.initEvent(eventName, false, false);
+		document.getElementsByTagName("body")[0].dispatchEvent(e);
 	}
 
 	function getMotionWeight (previous, current, motionDirection) {
