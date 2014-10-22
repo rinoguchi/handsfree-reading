@@ -22,7 +22,7 @@
 			"js/voice_commander.js",
 			"js/webcam-swiper-0.1.js",
 			"js/gesture_commander.js",
-			"js/dummy-operator.js",
+			"js/operator.js",
 			"js/content_script.js"
 		]
 	}],
