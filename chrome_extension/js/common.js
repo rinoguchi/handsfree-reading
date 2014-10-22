@@ -5,14 +5,17 @@ window.HandsFree = window.HandsFree || (function() {
 	}
 
 	function load(callback) {
-		var defaultOption = {'modes': ['speech', 'gesture'], 'language': 'ja-JP', 'direction': 'horizontal'};
+		var defaultOption = {'modes': {'speech': true, 'gesture': true}, 'language': 'ja-JP', 'direction': 'horizontal'};
 
 		chrome.storage.local.get('options', function(result) {
-			console.log(result);
 			callback(result.options ? result.options : defaultOption);
 		});
 	}
 
-	return { save: save, load: load };
+	function clear() {
+		chrome.storage.local.remove('options');
+	}
+
+	return { save: save, load: load , clear: clear};
 
 })();
