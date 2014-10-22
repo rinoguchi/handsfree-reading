@@ -19,7 +19,7 @@ if (window.HandsFree) {
 			commands = [
 				{ texts: ["上","うえ","アップ"],     onMatch: function() { operator.scrollUp(100);    } }
 				, { texts: ["下","した","ダウン"],   onMatch: function() { operator.scrollDown(100); } }
-				, { texts: ["材料"],                 onMatch: function() { operator.readSection("zairyou");   } }
+				, { texts: ["材料"],                 onMatch: function() { operator.readSection("zairyo");   } }
 				, { texts: ["１","1","一","いち"],   onMatch: function() { operator.readSection("1");   } }
 				, { texts: ["2"], onMatch: function() { operator.readSection("2");   } }
 				, { texts: ["3"], onMatch: function() { operator.readSection("3");   } }
@@ -33,11 +33,13 @@ if (window.HandsFree) {
 
 			recognition = new webkitSpeechRecognition();
 			recognition.lang = options.lang || "ja-JP";
-			recognition.continuous = true;
+			recognition.continuous = false;
 			recognition.interimResults = true;
+
 			recognition.onend = function(event) {
-				log(event);
-				recognizing = false;
+				log("recognition ended.");
+				recognition.start();
+				//recognizing = false;
 			}
 
 			recognition.onresult = function(event) { 
