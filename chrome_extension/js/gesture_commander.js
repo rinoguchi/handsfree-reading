@@ -8,7 +8,7 @@ if (window.HandsFree) {
 			if (direction === 'horizontal') {
 				operator.rightAction();
 			} else {
-				operator.scrollDown(300);
+				operator.scrollDown(500);
 			}
 		}
 
@@ -16,7 +16,7 @@ if (window.HandsFree) {
 			if (direction === 'horizontal') {
 				operator.leftAction();
 			} else {
-				operator.scrollUp(300);
+				operator.scrollUp(500);
 			}
 		}
 

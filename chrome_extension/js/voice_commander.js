@@ -17,8 +17,8 @@ if (window.HandsFree) {
 
 		function init(options) {
 			commands = [
-				{ texts: ["上","うえ","アップ"],     onMatch: function() { operator.scrollUp(100);    } }
-				, { texts: ["下","した","ダウン"],   onMatch: function() { operator.scrollDown(100); } }
+				{ texts: ["上","うえ","アップ"],     onMatch: function() { operator.scrollUp(300);    } }
+				, { texts: ["下","した","ダウン"],   onMatch: function() { operator.scrollDown(300); } }
 				, { texts: ["材料"],                 onMatch: function() { operator.readSection("zairyo");   } }
 				, { texts: ["１","1","一","いち"],   onMatch: function() { operator.readSection("1");   } }
 				, { texts: ["2"], onMatch: function() { operator.readSection("2");   } }

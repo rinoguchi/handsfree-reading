@@ -41,19 +41,26 @@ if (window.HandsFree) {
 			_scroll(-1 * amount);
 		};
 
+		var isScrolling = false;
+
 		// スクロール処理
 		// @param amount : px指定、マイナス値だと上へ、プラス値だと下へ
 		var _scroll = function(amount) {
 			if (amount === 0) return;
-			var scrollby = amount / 50; // スクロール量
+			if (isScrolling) return;
+			isScrolling = true;
+
+			var scrollby = amount / 6; // スクロール量
 
 			var before = document.body.scrollTop;
 			var timerId = setInterval(function() {
 				scrollBy(0, scrollby);
+				scrollby = scrollby * 0.9;
 				if (document.body.scrollTop === 0
 						|| (document.body.scrollHeight - window.innerHeight === document.body.scrollTop)
 						|| Math.abs(amount) <= Math.abs(before - document.body.scrollTop)) {
 					clearInterval(timerId);
+					isScrolling = false;
 					return;
 				}
 			}, 5);
@@ -66,6 +73,11 @@ if (window.HandsFree) {
 				alert('Web Speech API には未対応です。');
 				return;
 			}
+
+			if (speechSynthesis.speaking) {
+				speechSynthesis.cancel();
+			}
+
 			var msg = new SpeechSynthesisUtterance();
 			msg.volume = 1;
 			msg.rate = 1;
@@ -75,7 +87,8 @@ if (window.HandsFree) {
 			msg.onend = function (event) {
 				console.log("speech finished.");
 			}
-		speechSynthesis.speak(msg);
+			
+			speechSynthesis.speak(msg);
 		};
 		
 		var leftAction = function() { console.log("leftAction!!"); };
