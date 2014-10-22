@@ -3,13 +3,17 @@
 navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || undefined;
 var videoElement;
 
-function initializeWebcamSwiper() {
+
+function initializeWebcamSwiper(direction) {
 	if (navigator.getUserMedia === undefined) {
 		if (console !== undefined) {
 			console.log("Browser doesn't support getUserMedia");
 			return;
 		}
 	}
+
+	window.WebcamSwiperOptions = {direction: direction || "horizontal"};
+	
 
 	navigator.getUserMedia({video: true, audio: false}, function (stream) {
 		window.webcamSwiperStream = stream;
@@ -47,7 +51,7 @@ function initializeWebcamSwiper() {
 		document.body.appendChild(webcamCanvas);
 
 		webcamCanvasCtx = webcamCanvas.getContext("2d");
-
+		webcamCanvasCtx.scale(-1, 1);
 	}, function(err) {
 		console('Something went wrong in getUserMedia');
 	});
@@ -84,16 +88,15 @@ function startSwipeRecogntion() {
 	var lightLevel = 0;
 	var scanCount = 0;
 	var frameAnalysisTime = 36;
-	var motionDirection = "vertical";
-	// var motionDirection = "horizontal";
-	// var motionDirection = document.getElementById("gesture_direction").value;
+	var motionDirection = window.WebcamSwiperOptions.direction;
+	console.log("direction is: " + motionDirection);
 
 	// every ?th of a second, sample the video stream
 	window.webcamSwiperInterval = setInterval(analyzeCurrentFrame, 1000/28);
 
 	function analyzeCurrentFrame() {
 		// Draw webcam canvas
-		webcamCanvasCtx.drawImage(videoElement, 0, 0, webcamCanvas.width, webcamCanvas.height);
+		webcamCanvasCtx.drawImage(videoElement, webcamCanvas.width * -1, 0, webcamCanvas.width, webcamCanvas.height);
 
 		// Start the timer
 		var startTime = new Date().getTime();

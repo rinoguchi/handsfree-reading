@@ -8,7 +8,7 @@ if (window.HandsFree) {
 			if (direction === 'horizontal') {
 				operator.rightAction();
 			} else {
-				operator.scrollDown(500);
+				operator.scrollDown(1000);
 			}
 		}
 
@@ -16,7 +16,7 @@ if (window.HandsFree) {
 			if (direction === 'horizontal') {
 				operator.leftAction();
 			} else {
-				operator.scrollUp(500);
+				operator.scrollUp(1000);
 			}
 		}
 
@@ -29,7 +29,7 @@ if (window.HandsFree) {
 		// ジェスチャー認識を開始
 		var start = function() {
 			console.log("GestureCommander start!!");
-			window.initializeWebcamSwiper();
+			window.initializeWebcamSwiper(direction);
 		};
 
 		// ジェスチャー認識を停止
