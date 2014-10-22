@@ -1,8 +1,8 @@
 if (window.HandsFree) {
 	(function($) {
-
 		$.start = function () {
 			$.load(function(options) {
+				$.operator.init(options);
 				if (options.modes.speech) {
 					$.voice.init(options);
 					$.voice.setOperator($.operator);

@@ -14,14 +14,13 @@
   <div class="container">
     <div class="page-header"><h1>Option Setting</h1></div>
     <form role="form" ng-controller="OptionCtlr" ng-submit="save()">
-      <pre>{{options|json}}{{test|json}}</pre><br>
       <div class="form-group">
-        <label>Recognition Mode</label>
+        <label>Recognition Mode</label><br/>
         <input type="checkbox" ng-model="options.modes.speech"> Speech
         <input type="checkbox" ng-model="options.modes.gesture"> Gesture
       </div>
       <div class="form-group">
-        <label>Speaking Language</label>
+        <label>Speaking Language</label><br/>
         <label class="radio-inline">
           <input type="radio" ng-model="options.language" value="ja-JP"> Japanese
         </label>
@@ -30,7 +29,7 @@
         </label>
       </div>
       <div class="form-group">
-        <label>Gesture Direction</label>
+        <label>Gesture Direction</label><br/>
         <label class="radio-inline">
           <input type="radio" ng-model="options.direction" value="horizontal"> Horizontal
         </label>
@@ -38,7 +37,40 @@
           <input type="radio" ng-model="options.direction" value="vertical"> Vertical
         </label>
       </div>
-      <button type="submit" class="btn btn-default">Save</button>
+      <div class="form-group">
+        <label>Site Settings</label>
+        <button type="button" class="btn btn-info btn-xs" ng-click="addSiteSetting()">Add Site Setting</button>
+        <table class="table">
+          <tr>
+            <th>name</th>
+            <th>url</th>
+            <th>sections</th>
+          </tr>
+          <tr ng-repeat="siteSetting in options.siteSettings">
+            <td class="col-xs-2"><textarea class="form-control" ng-model="siteSetting.name" raw="2" required/></textarea></td>
+            <td class="col-xs-2"><textarea class="form-control" ng-model="siteSetting.url" raw="2" required/></textarea></td>
+            <td>
+              <table class="table">
+                <tr>
+                  <th class="col-xs-2">name</th>
+                  <th>function</th>
+                </tr>
+                <tr ng-repeat="section in siteSetting.sections">
+                  <td><textarea class="form-control" ng-model="section.name" rows="2" required></textarea></td>
+                  <td><textarea class="form-control" ng-model="section.func" rows="2" required></textarea></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        <table>
+        </ul>
+        <div>
+          <label ng-model="siteSetting.name"></label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Save</button>
+      <button type="button" class="btn btn-success" ng-click="load()">Load</button>
+      <button type="button" class="btn btn-default" ng-click="reset()">Reset</button>
     </form>
   </div>
 </body>
