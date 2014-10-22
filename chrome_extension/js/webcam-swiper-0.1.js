@@ -33,20 +33,20 @@ function initializeWebcamSwiper() {
 		// Wait for the video element to initialize
 		videoElement.addEventListener("loadeddata", startSwipeRecogntion);
 
-        // Init webcam canvas
-        webcamCanvas = document.createElement("canvas");
-        webcamCanvas.id = "webcamCanvas";
-        webcamCanvas.width = 160;
-        webcamCanvas.heght = 120;
-        webcamCanvas.style.zIndex = "1001";
-        webcamCanvas.style.position = "fixed";
-        webcamCanvas.style.top = "10px";
-        webcamCanvas.style.right = "10px";
-        webcamCanvas.style.opacity = 0.5;
+		// Init webcam canvas
+		webcamCanvas = document.createElement("canvas");
+		webcamCanvas.id = "webcamCanvas";
+		webcamCanvas.width = 160;
+		webcamCanvas.heght = 120;
+		webcamCanvas.style.zIndex = "1001";
+		webcamCanvas.style.position = "fixed";
+		webcamCanvas.style.top = "10px";
+		webcamCanvas.style.right = "10px";
+		webcamCanvas.style.opacity = 0.5;
 
-        document.body.appendChild(webcamCanvas);
+		document.body.appendChild(webcamCanvas);
 
-        webcamCanvasCtx = webcamCanvas.getContext("2d");
+		webcamCanvasCtx = webcamCanvas.getContext("2d");
 
 	}, function(err) {
 		console('Something went wrong in getUserMedia');
@@ -84,16 +84,16 @@ function startSwipeRecogntion() {
 	var lightLevel = 0;
 	var scanCount = 0;
 	var frameAnalysisTime = 36;
-    var motionDirection = "vertical";
-    // var motionDirection = "horizontal";
-    // var motionDirection = document.getElementById("gesture_direction").value;
+	var motionDirection = "vertical";
+	// var motionDirection = "horizontal";
+	// var motionDirection = document.getElementById("gesture_direction").value;
 
 	// every ?th of a second, sample the video stream
 	window.webcamSwiperInterval = setInterval(analyzeCurrentFrame, 1000/28);
 
 	function analyzeCurrentFrame() {
-        // Draw webcam canvas
-        webcamCanvasCtx.drawImage(videoElement, 0, 0, webcamCanvas.width, webcamCanvas.height);
+		// Draw webcam canvas
+		webcamCanvasCtx.drawImage(videoElement, 0, 0, webcamCanvas.width, webcamCanvas.height);
 
 		// Start the timer
 		var startTime = new Date().getTime();
@@ -184,11 +184,11 @@ function startSwipeRecogntion() {
 		var dataLength = previousData.length;
 		for (var i = 0; i < dataLength; i += 4) {
 			if (Math.abs(previousData[i] - currentData[i]) > PIXEL_CHANGE_THRESHOLD) {
-                if (motionDirection == "vertical") {
-				    motionWeight += ((i / 4) % canvasHeight) - (canvasHeight / 2);
-                } else {  // horizonatl
-				    motionWeight += ((i / 4) % canvasWidth) - (canvasWidth / 2);
-                }
+				if (motionDirection == "vertical") {
+					motionWeight += ((i / 4) % canvasHeight) - (canvasHeight / 2);
+				} else {  // horizonatl
+					motionWeight += ((i / 4) % canvasWidth) - (canvasWidth / 2);
+				}
 			}
 		}
 		return motionWeight;
@@ -237,5 +237,5 @@ function destroyWebcamSwiper() {
 		window.webcamSwiperStream.stop();
 		window.webcamSwiperStream = undefined;
 	}
-    webcamCanvasCtx.clearRect(0, 0, webcamCanvas.width, webcamCanvas.height);
+	webcamCanvasCtx.clearRect(0, 0, webcamCanvas.width, webcamCanvas.height);
 }

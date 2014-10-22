@@ -13,6 +13,6 @@ window.HandsFree = window.HandsFree || (function() {
 		});
 	}
 
-  return { save: save, load: load };
+	return { save: save, load: load };
 
 })();
