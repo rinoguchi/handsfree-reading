@@ -1,30 +1,35 @@
-jQuery(document).ready(function(){
-
-	window.HandsFree.load(function(options) {
-
-		jQuery.each(options.modes, function(i, mode) {
-			jQuery('#' + mode).attr('checked', 'checked');
+function OptionCtlr($scope) {
+	$scope.save = function() {
+		window.HandsFree.save($scope.options);
+	};
+	$scope.load = function() {
+		window.HandsFree.load(function(options) {
+			$scope.options = options;
+			$scope.$apply(); //手動反映
 		});
-		jQuery('#saveModes').click(function() {
-			options.modes = [];
-			jQuery.each(jQuery('input[name="modes"]:checked'), function(i, mode) {
-				options.modes.push($(mode).val());
-			});
-			window.HandsFree.save(options);
+	};
+	$scope.reset = function() {
+		window.HandsFree.clear();
+		$scope.load();
+	}
+	$scope.addSiteSetting = function() {
+		$scope.options.siteSettings.push({
+			name: '',
+			url: '',
+			sections: [
+				{ name: '0', func: 'function() {return "0";}' },
+				{ name: '1', func: 'function() {return "1";}' },
+				{ name: '2', func: 'function() {return "2";}' },
+				{ name: '3', func: 'function() {return "3";}' },
+				{ name: '4', func: 'function() {return "4";}' },
+				{ name: '5', func: 'function() {return "5";}' },
+				{ name: '6', func: 'function() {return "6";}' },
+				{ name: '7', func: 'function() {return "7";}' },
+				{ name: '8', func: 'function() {return "8";}' },
+				{ name: '9', func: 'function() {return "9";}' }
+			]
 		});
+	}
 
-		jQuery('#' + options.language).attr('checked', 'checked');
-		jQuery('#saveLanguage').click(function() {
-			options.language = jQuery('input[name="language"]:checked').val();
-			window.HandsFree.save(options);
-		});
-
-		jQuery('#' + options.direction).attr('checked', 'checked');
-		jQuery('#saveDirection').click(function() {
-			options.direction = jQuery('input[name="direction"]:checked').val();
-			window.HandsFree.save(options);
-		});
-
-	});
-
-});
+	$scope.load();
+}

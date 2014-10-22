@@ -1,25 +1,77 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" ng-app>
 <head>
   <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
   <script src="js/jquery-2.1.1.min.js"></script>
   <script src="js/common.js"></script>
+  <script src="js/angular.min.js"></script>
   <script src="js/options.js"></script>
 </head>
-<body>
-  <h1>Recognition Mode</h1>
-  <input type="checkbox" name="modes" value="speech" id="speech"> Speech
-  <input type="checkbox" name="modes" value="gesture" id="gesture"> Gesture
-  <input type="button" id="saveModes" value="save">
-  <br/><br/>
-  <h1>Speaking Language</h1>
-  <input type="radio" name="language" value="ja-JP" id="ja-JP"> Japanese
-  <input type="radio" name="language" value="en-US" id="en-US"> English
-  <input type="button" id="saveLanguage" value="save">
-  <br/><br/>
-  <h1>Gesture Direction</h1>
-  <input type="radio" name="direction" value="horizontal" id="horizontal"> Horizontal
-  <input type="radio" name="direction" value="vertical" id="vertical"> Vertical
-  <input type="button" id="saveDirection" value="save">
+<body ng-app>
+  <div class="container">
+    <div class="page-header"><h1>Option Setting</h1></div>
+    <form role="form" ng-controller="OptionCtlr" ng-submit="save()">
+      <div class="form-group">
+        <label>Recognition Mode</label><br/>
+        <input type="checkbox" ng-model="options.modes.speech"> Speech
+        <input type="checkbox" ng-model="options.modes.gesture"> Gesture
+      </div>
+      <div class="form-group">
+        <label>Speaking Language</label><br/>
+        <label class="radio-inline">
+          <input type="radio" ng-model="options.language" value="ja-JP"> Japanese
+        </label>
+        <label class="radio-inline">
+          <input type="radio" ng-model="options.language" value="en-US"> English
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Gesture Direction</label><br/>
+        <label class="radio-inline">
+          <input type="radio" ng-model="options.direction" value="horizontal"> Horizontal
+        </label>
+        <label class="radio-inline">
+          <input type="radio" ng-model="options.direction" value="vertical"> Vertical
+        </label>
+      </div>
+      <div class="form-group">
+        <label>Site Settings</label>
+        <button type="button" class="btn btn-info btn-xs" ng-click="addSiteSetting()">Add Site Setting</button>
+        <table class="table">
+          <tr>
+            <th>name</th>
+            <th>url</th>
+            <th>sections</th>
+          </tr>
+          <tr ng-repeat="siteSetting in options.siteSettings">
+            <td class="col-xs-2"><textarea class="form-control" ng-model="siteSetting.name" raw="2" required/></textarea></td>
+            <td class="col-xs-2"><textarea class="form-control" ng-model="siteSetting.url" raw="2" required/></textarea></td>
+            <td>
+              <table class="table">
+                <tr>
+                  <th class="col-xs-2">name</th>
+                  <th>function</th>
+                </tr>
+                <tr ng-repeat="section in siteSetting.sections">
+                  <td><textarea class="form-control" ng-model="section.name" rows="2" required></textarea></td>
+                  <td><textarea class="form-control" ng-model="section.func" rows="2" required></textarea></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        <table>
+        </ul>
+        <div>
+          <label ng-model="siteSetting.name"></label>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Save</button>
+      <button type="button" class="btn btn-success" ng-click="load()">Load</button>
+      <button type="button" class="btn btn-default" ng-click="reset()">Reset</button>
+    </form>
+  </div>
 </body>
 </html>
