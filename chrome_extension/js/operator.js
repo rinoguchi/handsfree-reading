@@ -6,7 +6,10 @@ if (window.HandsFree) {
 			options = opts;
 		}
 
-		// セクションを読み上げ
+		/**
+		 * セクションを読み上げ
+		 * @param sectionName : セクション名
+		 */
 		var readSection = function(sectionName) {
 			console.log("readSection called!!");
 			var text = '未定義';
@@ -21,22 +24,28 @@ if (window.HandsFree) {
 			_read(text);
 		};
 
-		// 上スクロール
-		// @param ammount : スクロール量(px)
+		/**
+		 * 上スクロール
+		 * @param ammount : スクロール量(px)
+		 */
 		var scrollUp = function(amount) {
 			_scroll(+1 * amount);
 		};
 
-		// 下スクロール
-		// @param ammount : スクロール量(px)
+		/**
+		 * 下スクロール
+		 * @param ammount : スクロール量(px)
+		 */
 		var scrollDown = function(amount) {
 			_scroll(-1 * amount);
 		};
 
 		var isScrolling = false;
 
-		// スクロール処理
-		// @param amount : px指定、マイナス値だと上へ、プラス値だと下へ
+		/**
+		 * スクロール処理
+		 * @param amount : px指定、マイナス値だと上へ、プラス値だと下へ
+		 */
 		var _scroll = function(amount) {
 			if (amount === 0) return;
 			if (isScrolling) return;
@@ -58,8 +67,10 @@ if (window.HandsFree) {
 			}, 5);
 		};
 
-		// 音声読み上げ
-		// @param text : 読み上げる文章
+		/**
+		 * 音声読み上げ
+		 * @param text : 読み上げる文章
+		 */
 		var _read = function(text) {
 			if (!'SpeechSynthesisUtterance' in window) {
 				alert('Web Speech API には未対応です。');
@@ -82,9 +93,30 @@ if (window.HandsFree) {
 			
 			speechSynthesis.speak(msg);
 		};
-		
-		var leftAction = function() { console.log("leftAction!!"); };
-		var rightAction = function() {  console.log("rightAction!!"); };
+
+		/**
+		 * 左方向へのアクション
+		 * プレゼン用のベタ実装
+		 */
+		var leftAction = function() {
+			console.log("leftAction is called!!");
+			var elms = document.getElementsByClassName('navigate-left');
+			for (var i = 0; i < elms.length; i++) {
+				elms[i].click();
+			}
+		};
+
+		/**
+		 * 右方向へのアクション
+		 * プレゼン用のベタ実装
+		 */
+		var rightAction = function() {
+			console.log("rightAction is called!!");
+			var elms = document.getElementsByClassName('navigate-right');
+			for (var i = 0; i < elms.length; i++) {
+				elms[i].click();
+			}
+		};
 		
 		
 		return { 

@@ -11,16 +11,18 @@
   <script src="js/options.js"></script>
 </head>
 <body ng-app>
-  <div class="container">
-    <div class="page-header"><h1>Option Setting</h1></div>
-    <form role="form" ng-controller="OptionCtlr" ng-submit="save()">
+  <div class="container" ng-controller="OptionCtlr" >
+    <div class="form-horizontal" class="page-header"><h1>Option Setting</h1></div>
+    <div class="alert alert-success" role="alert" ng-show="successMessage">{{successMessage}}</div>
+    <div class="alert alert-danger" role="alert" ng-show="errorMessage">{{errorMessage}}</div>
+    <form role="form" ng-submit="save()">
       <div class="form-group">
-        <label>Recognition Mode</label><br/>
+        <label>Recognition Mode</label>
         <input type="checkbox" ng-model="options.modes.speech"> Speech
         <input type="checkbox" ng-model="options.modes.gesture"> Gesture
       </div>
       <div class="form-group">
-        <label>Speaking Language</label><br/>
+        <label>Speaking Language</label>
         <label class="radio-inline">
           <input type="radio" ng-model="options.language" value="ja-JP"> Japanese
         </label>
@@ -29,7 +31,7 @@
         </label>
       </div>
       <div class="form-group">
-        <label>Gesture Direction</label><br/>
+        <label>Gesture Direction</label>
         <label class="radio-inline">
           <input type="radio" ng-model="options.direction" value="horizontal"> Horizontal
         </label>
@@ -40,37 +42,36 @@
       <div class="form-group">
         <label>Site Settings</label>
         <button type="button" class="btn btn-info btn-xs" ng-click="addSiteSetting()">Add Site Setting</button>
-        <table class="table">
-          <tr>
-            <th>name</th>
-            <th>url</th>
-            <th>sections</th>
-          </tr>
-          <tr ng-repeat="siteSetting in options.siteSettings">
-            <td class="col-xs-2"><textarea class="form-control" ng-model="siteSetting.name" raw="2" required/></textarea></td>
-            <td class="col-xs-2"><textarea class="form-control" ng-model="siteSetting.url" raw="2" required/></textarea></td>
-            <td>
-              <table class="table">
-                <tr>
-                  <th class="col-xs-2">name</th>
-                  <th>function</th>
-                </tr>
-                <tr ng-repeat="section in siteSetting.sections">
-                  <td><textarea class="form-control" ng-model="section.name" rows="2" required></textarea></td>
-                  <td><textarea class="form-control" ng-model="section.func" rows="2" required></textarea></td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        <table>
-        </ul>
-        <div>
-          <label ng-model="siteSetting.name"></label>
+        <div ng-repeat="siteSetting in options.siteSettings">
+          <table class="table table-bordered">
+            <tr>
+              <td>
+                <label>Name</label>
+                <button type="button" class="btn btn-danger btn-xs" ng-click="deleteSiteSetting()">Delete</button>
+                <input type="text" class="form-control" ng-model="siteSetting.name" required/>
+                <label>URL</label>
+                <input type="text" class="form-control" ng-model="siteSetting.url" required/>
+                <label>Sections</label>
+                <table class="table">
+                  <tr>
+                    <th class="col-xs-2">name</th>
+                    <th>function</th>
+                  </tr>
+                  <tr ng-repeat="section in siteSetting.sections">
+                    <td><textarea class="form-control" ng-model="section.name" rows="2" required></textarea></td>
+                    <td><textarea class="form-control" ng-model="section.func" rows="2" required></textarea></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary">Save</button>
-      <button type="button" class="btn btn-success" ng-click="load()">Load</button>
-      <button type="button" class="btn btn-default" ng-click="reset()">Reset</button>
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary">Save to Strage</button>
+        <button type="button" class="btn btn-success" ng-click="load(true)">Load from Strage</button>
+        <button type="button" class="btn btn-default" ng-click="reset()">Reset to Default</button>
+      </div>
     </form>
   </div>
 </body>
