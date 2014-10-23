@@ -5,7 +5,8 @@ if (window.HandsFree) {
 		var direction;
 
 		function rightOrDown() {
-			if (direction === 'horizontal') {
+			console.log(window.location.href);
+			if (window.location.href.match('cookpad\.com')) {
 				operator.rightAction();
 			} else {
 				operator.scrollDown(1000);
@@ -13,10 +14,11 @@ if (window.HandsFree) {
 		}
 
 		function leftOrUp() {
-			if (direction === 'horizontal') {
-				operator.leftAction();
-			} else {
+			console.log(window.location.href);
+			if (window.location.href.match('cookpad\.com')) {
 				operator.scrollUp(1000);
+			} else {
+				operator.leftAction();
 			}
 		}
 
