@@ -1,17 +1,39 @@
-function OptionCtlr($scope) {
+function OptionCtlr($scope, $timeout) {
+
+	$scope.successMessage = '';
+	$scope.errorMessage = '';
+	var setMessage = function(message, isError) {
+		$scope.successMessage = '';
+		$scope.errorMessage = '';
+		if (isError) {
+			$scope.errorMessage = message;
+		} else {
+			$scope.successMessage = message;
+		}
+		jQuery('html,body').animate({ scrollTop: 0 });
+	}
+
 	$scope.save = function() {
 		window.HandsFree.save($scope.options);
+		setMessage('Option setting was saved to strage successfully.', false);
 	};
-	$scope.load = function() {
+
+	$scope.load = function(showMessage) {
 		window.HandsFree.load(function(options) {
 			$scope.options = options;
+			if (showMessage) {
+				setMessage('Option setting was loaded from strage successfully.', false);
+			}
 			$scope.$apply(); //手動反映
 		});
 	};
+
 	$scope.reset = function() {
 		window.HandsFree.clear();
-		$scope.load();
+		$scope.load(false);
+		setMessage('Option setting was reset to default successfully.', false);
 	}
+
 	$scope.addSiteSetting = function() {
 		$scope.options.siteSettings.push({
 			name: '',
@@ -31,5 +53,11 @@ function OptionCtlr($scope) {
 		});
 	}
 
-	$scope.load();
+	$scope.deleteSiteSetting = function() {
+		$scope.options.siteSettings.splice(this.$index, 1);
+		setMessage('Site setting was deleted successfully (not deleted from storage yet).', false);
+	}
+
+	// 初期表示用
+	$scope.load(false);
 }
