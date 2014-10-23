@@ -13,7 +13,7 @@ window.HandsFree = window.HandsFree || (function() {
 					name: 'CookPad',
 					url: 'http://cookpad.com/.*',
 					sections: [
-						{ name: 'zairyo', func: 'function() {var ingredients = document.getElementById("ingredients_list").children;var text = "";for (var i = 0; i < ingredients.length; i++) {var ingredient = ingredients[i];text = text + ingredient.getElementsByClassName("ingredient_name")[0].innerText + "、" + ingredient.getElementsByClassName("ingredient_quantity amount")[0].innerText + "。";}return text;}' },
+						{ name: 'zairyo', func: 'function() {return Array.prototype.slice.call(document.getElementsByClassName("ingredient")).map(function(e) { var nElms = e.getElementsByClassName("ingredient_name"); var qElms = e.getElementsByClassName("ingredient_quantity"); return (nElms[0] ? nElms[0].innerText : "") + "。" + (qElms[0] ? qElms[0].innerText : "");}).join("。");}' },
 						{ name: '1', func: 'function() {return document.getElementsByClassName("step_text")[0].innerText}' },
 						{ name: '2', func: 'function() {return document.getElementsByClassName("step_text")[1].innerText}' },
 						{ name: '3', func: 'function() {return document.getElementsByClassName("step_text")[2].innerText}' },

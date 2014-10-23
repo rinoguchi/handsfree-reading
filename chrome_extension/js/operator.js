@@ -1,9 +1,9 @@
 if (window.HandsFree) {
 	window.HandsFree.operator = (function() {
 
-		var options;
-		var init = function(opts) {
-			options = opts;
+		var siteSetting;
+		var init = function(setting) {
+			siteSetting = setting;
 		}
 
 		/**
@@ -13,7 +13,7 @@ if (window.HandsFree) {
 		var readSection = function(sectionName) {
 			console.log("readSection called!!");
 			var text = '未定義';
-			options.siteSettings[0].sections.forEach(function(section, i) {
+			siteSetting.sections.forEach(function(section, i) {
 				if(section.name == sectionName) {
 					console.log("func:" + section.func);
 					eval('text = ' + section.func + '()');
