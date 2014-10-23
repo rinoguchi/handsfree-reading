@@ -55,6 +55,9 @@ if (window.HandsFree) {
 			}
 
 			recognition.onerror = function(event) {
+				if (event.error === "aborted") {
+					return;
+				}
 				recognizing = false;
 				log("Error occured. recognition stopped.");
 				log(event);

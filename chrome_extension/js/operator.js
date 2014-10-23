@@ -51,12 +51,12 @@ if (window.HandsFree) {
 			if (isScrolling) return;
 			isScrolling = true;
 
-			var scrollby = amount / 6; // スクロール量
+			var scrollby = amount / 10; // スクロール量
 
 			var before = document.body.scrollTop;
 			var timerId = setInterval(function() {
 				scrollBy(0, scrollby);
-				scrollby = scrollby * 0.95;
+				if (scrollby > 20) { scrollby = scrollby * 0.8; }
 				if (document.body.scrollTop === 0
 						|| (document.body.scrollHeight - window.innerHeight === document.body.scrollTop)
 						|| Math.abs(amount) <= Math.abs(before - document.body.scrollTop)) {
