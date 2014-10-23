@@ -100,7 +100,7 @@ if (window.HandsFree) {
 		 */
 		var leftAction = function() {
 			console.log("leftAction is called!!");
-			var elms = document.getElementsByClassName('navigate-left');
+			var elms = document.getElementsByClassName('navigate-right');
 			for (var i = 0; i < elms.length; i++) {
 				elms[i].click();
 			}
@@ -112,7 +112,7 @@ if (window.HandsFree) {
 		 */
 		var rightAction = function() {
 			console.log("rightAction is called!!");
-			var elms = document.getElementsByClassName('navigate-right');
+			var elms = document.getElementsByClassName('navigate-left');
 			for (var i = 0; i < elms.length; i++) {
 				elms[i].click();
 			}
