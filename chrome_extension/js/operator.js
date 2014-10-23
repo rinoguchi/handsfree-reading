@@ -56,7 +56,7 @@ if (window.HandsFree) {
 			var before = document.body.scrollTop;
 			var timerId = setInterval(function() {
 				scrollBy(0, scrollby);
-				scrollby = scrollby * 0.9;
+				scrollby = scrollby * 0.95;
 				if (document.body.scrollTop === 0
 						|| (document.body.scrollHeight - window.innerHeight === document.body.scrollTop)
 						|| Math.abs(amount) <= Math.abs(before - document.body.scrollTop)) {
@@ -64,7 +64,7 @@ if (window.HandsFree) {
 					isScrolling = false;
 					return;
 				}
-			}, 5);
+			}, 10);
 		};
 
 		/**
