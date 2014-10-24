@@ -31,8 +31,8 @@ function OptionCtlr($scope, $timeout) {
 	$scope.reset = function() {
 		window.HandsFree.clear();
 		$scope.load(false);
-		setMessage('Option setting was reset to default successfully.', false);
-	}
+		setMessage('Option setting was reset to default successfully (not saved to storage yet).', false);
+	};
 
 	$scope.addSiteSetting = function() {
 		$scope.options.siteSettings.push({
@@ -51,12 +51,12 @@ function OptionCtlr($scope, $timeout) {
 				{ name: '9', func: 'function() {return "9";}' }
 			]
 		});
-	}
+	};
 
 	$scope.deleteSiteSetting = function() {
 		$scope.options.siteSettings.splice(this.$index, 1);
 		setMessage('Site setting was deleted successfully (not deleted from storage yet).', false);
-	}
+	};
 
 	// 初期表示用
 	$scope.load(false);

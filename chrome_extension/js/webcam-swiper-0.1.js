@@ -240,5 +240,7 @@ function destroyWebcamSwiper() {
 		window.webcamSwiperStream.stop();
 		window.webcamSwiperStream = undefined;
 	}
-	webcamCanvasCtx.clearRect(0, 0, webcamCanvas.width, webcamCanvas.height);
+	if (typeof webcamCanvasCtx !== 'undefined') {
+		webcamCanvasCtx.clearRect(0, 0, -1 * webcamCanvas.width, webcamCanvas.height);
+	}
 }

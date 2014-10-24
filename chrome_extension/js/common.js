@@ -11,18 +11,34 @@ window.HandsFree = window.HandsFree || (function() {
 			direction: 'horizontal',
 			siteSettings: [{
 					name: 'CookPad',
-					url: 'http://cookpad.com/.*',
+					url: 'http.*://cookpad.com/.*',
 					sections: [
-						{ name: 'zairyo', func: 'function() {var ingredients = document.getElementById("ingredients_list").children;var text = "";for (var i = 0; i < ingredients.length; i++) {var ingredient = ingredients[i];text = text + ingredient.getElementsByClassName("ingredient_name")[0].innerText + "、" + ingredient.getElementsByClassName("ingredient_quantity amount")[0].innerText + "。";}return text;}' },
-						{ name: '1', func: 'function() {var steps = document.getElementsByClassName("step");for (var i = 0; i < steps.length; i++) {if (steps[i].getAttribute("data-position") == "1") {return steps[i].getElementsByClassName("step_text")[0].innerText;}}}' },
-						{ name: '2', func: 'function() {var steps = document.getElementsByClassName("step");for (var i = 0; i < steps.length; i++) {if (steps[i].getAttribute("data-position") == "2") {return steps[i].getElementsByClassName("step_text")[0].innerText;}}}' },
-						{ name: '3', func: 'function() {var steps = document.getElementsByClassName("step");for (var i = 0; i < steps.length; i++) {if (steps[i].getAttribute("data-position") == "3") {return steps[i].getElementsByClassName("step_text")[0].innerText;}}}' },
-						{ name: '4', func: 'function() {var steps = document.getElementsByClassName("step");for (var i = 0; i < steps.length; i++) {if (steps[i].getAttribute("data-position") == "4") {return steps[i].getElementsByClassName("step_text")[0].innerText;}}}' },
-						{ name: '5', func: 'function() {var steps = document.getElementsByClassName("step");for (var i = 0; i < steps.length; i++) {if (steps[i].getAttribute("data-position") == "5") {return steps[i].getElementsByClassName("step_text")[0].innerText;}}}' },
-						{ name: '6', func: 'function() {var steps = document.getElementsByClassName("step");for (var i = 0; i < steps.length; i++) {if (steps[i].getAttribute("data-position") == "6") {return steps[i].getElementsByClassName("step_text")[0].innerText;}}}' },
-						{ name: '7', func: 'function() {var steps = document.getElementsByClassName("step");for (var i = 0; i < steps.length; i++) {if (steps[i].getAttribute("data-position") == "7") {return steps[i].getElementsByClassName("step_text")[0].innerText;}}}' },
-						{ name: '8', func: 'function() {var steps = document.getElementsByClassName("step");for (var i = 0; i < steps.length; i++) {if (steps[i].getAttribute("data-position") == "8") {return steps[i].getElementsByClassName("step_text")[0].innerText;}}}' },
-						{ name: '9', func: 'function() {var steps = document.getElementsByClassName("step");for (var i = 0; i < steps.length; i++) {if (steps[i].getAttribute("data-position") == "9") {return steps[i].getElementsByClassName("step_text")[0].innerText;}}}' }
+						{ name: 'zairyo', func: 'function() {return Array.prototype.slice.call(document.getElementsByClassName("ingredient")).map(function(e) { var nElms = e.getElementsByClassName("ingredient_name"); var qElms = e.getElementsByClassName("ingredient_quantity"); return (nElms[0] ? nElms[0].innerText : "") + "。" + (qElms[0] ? qElms[0].innerText : "");}).join("。");}' },
+						{ name: '1', func: 'function() {return document.getElementsByClassName("step_text")[0].innerText}' },
+						{ name: '2', func: 'function() {return document.getElementsByClassName("step_text")[1].innerText}' },
+						{ name: '3', func: 'function() {return document.getElementsByClassName("step_text")[2].innerText}' },
+						{ name: '4', func: 'function() {return document.getElementsByClassName("step_text")[3].innerText}' },
+						{ name: '5', func: 'function() {return document.getElementsByClassName("step_text")[4].innerText}' },
+						{ name: '6', func: 'function() {return document.getElementsByClassName("step_text")[5].innerText}' },
+						{ name: '7', func: 'function() {return document.getElementsByClassName("step_text")[6].innerText}' },
+						{ name: '8', func: 'function() {return document.getElementsByClassName("step_text")[7].innerText}' },
+						{ name: '9', func: 'function() {return document.getElementsByClassName("step_text")[8].innerText}' }
+					]
+				},
+				{
+					name: 'Demo',
+					url: 'http.*://demo.com/.*',
+					sections: [
+						{ name: '0', func: 'function() {return document.getElementsByTagName("section")[0].innerText;}' },
+						{ name: '1', func: 'function() {return document.getElementsByTagName("section")[1].innerText;}' },
+						{ name: '2', func: 'function() {return document.getElementsByTagName("section")[2].innerText;}' },
+						{ name: '3', func: 'function() {return document.getElementsByTagName("section")[3].innerText;}' },
+						{ name: '4', func: 'function() {return document.getElementsByTagName("section")[4].innerText;}' },
+						{ name: '5', func: 'function() {return document.getElementsByTagName("section")[5].innerText;}' },
+						{ name: '6', func: 'function() {return document.getElementsByTagName("section")[6].innerText;}' },
+						{ name: '7', func: 'function() {return document.getElementsByTagName("section")[7].innerText;}' },
+						{ name: '8', func: 'function() {return document.getElementsByTagName("section")[8].innerText;}' },
+						{ name: '9', func: 'function() {return document.getElementsByTagName("section")[9].innerText;}' }
 					]
 				}
 			]
