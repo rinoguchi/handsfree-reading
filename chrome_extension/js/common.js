@@ -29,16 +29,16 @@ window.HandsFree = window.HandsFree || (function() {
 					name: 'Demo',
 					url: 'http.*://demo.com/.*',
 					sections: [
-						{ name: '0', func: 'function() {return "0";}' },
-						{ name: '1', func: 'function() {return "1";}' },
-						{ name: '2', func: 'function() {return "2";}' },
-						{ name: '3', func: 'function() {return "3";}' },
-						{ name: '4', func: 'function() {return "4";}' },
-						{ name: '5', func: 'function() {return "5";}' },
-						{ name: '6', func: 'function() {return "6";}' },
-						{ name: '7', func: 'function() {return "7";}' },
-						{ name: '8', func: 'function() {return "8";}' },
-						{ name: '9', func: 'function() {return "9";}' }
+						{ name: '0', func: 'function() {return document.getElementsByTagName("section")[0].innerText;}' },
+						{ name: '1', func: 'function() {return document.getElementsByTagName("section")[1].innerText;}' },
+						{ name: '2', func: 'function() {return document.getElementsByTagName("section")[2].innerText;}' },
+						{ name: '3', func: 'function() {return document.getElementsByTagName("section")[3].innerText;}' },
+						{ name: '4', func: 'function() {return document.getElementsByTagName("section")[4].innerText;}' },
+						{ name: '5', func: 'function() {return document.getElementsByTagName("section")[5].innerText;}' },
+						{ name: '6', func: 'function() {return document.getElementsByTagName("section")[6].innerText;}' },
+						{ name: '7', func: 'function() {return document.getElementsByTagName("section")[7].innerText;}' },
+						{ name: '8', func: 'function() {return document.getElementsByTagName("section")[8].innerText;}' },
+						{ name: '9', func: 'function() {return document.getElementsByTagName("section")[9].innerText;}' }
 					]
 				}
 			]
