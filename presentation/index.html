@@ -48,11 +48,12 @@
                   <h2>
                     <img width="300" height="300" src="img/icon.png" alt="">
                   </h2>
-                  				  <h2>Handsfree Reading</h2>
+                  <h2>Handsfree Reading</h2>
 					<h4>ハンズフリー（音声認識・画像認識）で</h4>
                     <h4>ウェブサイトの文章を読み上げるChrome Extension</h4>
 					<p>
 					  <small>
+                        アカサカハンズフリーズ<br>
                         <a href="">r-murakami</a> /
 						<a href="">r-inoguchi</a> /
 						<a href="">k-numakura</a>
@@ -76,16 +77,16 @@
 
 				<section>
 				  <h2>Hands Free Reading!</h2>
-                  <img width="1000" height="1000" src="//" alt="Chrome Extentionのスクリーンショット">
+                  <img width="300" height="300" src="img/screenshot.png" alt="Chrome Extentionのスクリーンショット">
 				</section>
 
 				<section>
                   <h2>できること:</h2>
                   <ul>
                     <li>「いち」：レシピの(1)を読上げ</li>
-                    <li>「つぎ」：レシピの次の手順を読上げ</li>
-                    <li>手を上下に：画面をスクロール</li>
-                    <li>手を左右に：進む/戻る</li>
+                    <li>「つぎ」：次のスライドを表示</li>
+                    <li>手を左右に：次/前のスライドを表示</li>
+                    <li>手を左右に：画面をスクロール</li>
                   </ul>
 				</section>
 
@@ -122,18 +123,17 @@ self._read = function(text) {
                     HTML5 getUserMedia
 
                     ```
-navigator.getUserMedia({video: true}, function (stream) {
-    //...
-}, function(err) {
-    //...
-});
+navigator.getUserMedia({video: true}, function (stream) { ... }, function(err) { ... });
                     ```
 
-                    jsでがりがり画像処理演算
+                    そのあとは、jsでがりがり画像処理演算
 
-                    <img width="200" height="200" src="//" alt="アルゴリズムイメージ図">
-                    <img width="200" height="200" src="//" alt="アルゴリズムイメージ図">
-                    <img width="200" height="200" src="//" alt="アルゴリズムイメージ図">
+                    \# OpenCVの利用も考えましたが、pure jsでできました。
+
+
+                    <!-- <img width="200" height="200" src="//" alt="アルゴリズムイメージ図"> -->
+                    <!-- <img width="200" height="200" src="//" alt="アルゴリズムイメージ図"> -->
+                    <!-- <img width="200" height="200" src="//" alt="アルゴリズムイメージ図"> -->
 
                   </script>
                 </section>
@@ -164,20 +164,29 @@ function save(opts) {
 }
                     ```
 
+                    閲覧中のタブとjsが衝突しないよう配慮
+
+                      * 脱jQuery, 関数をなるべく隠蔽など
+
+
                   </script>
                 </section>
 
 				<section>
-					<h1>THE END</h1>
-					<h4>By
-                      <a href="">r-murakami</a> /
-					  <a href="">r-inoguchi</a> /
-					  <a href="">k-numakura</a>
+					<h3>
+					  By アカサカハンズフリーズ
+                    </h3>
+                    <h4>
+                      r-murakami /
+					  r-inoguchi /
+					  k-numakura
                     </h4>
-
-                    Gihub: <a href="//github.com/rinoguchi/handsfree-reading">
+                    <h4>
+                      Gihub:
+                    <a href="//github.com/rinoguchi/handsfree-reading">
                       rinoguchi/handsfree-reading
                     </a>
+                    </h4>
 				</section>
 
 			</div>
