@@ -13,6 +13,7 @@
 <body ng-app>
   <div class="container" ng-controller="OptionCtlr" >
     <div class="form-horizontal" class="page-header"><h1>Option Setting</h1></div>
+    <!--<pre>{{options|json}}</pre>-->
     <div class="alert alert-success" role="alert" ng-show="successMessage">{{successMessage}}</div>
     <div class="alert alert-danger" role="alert" ng-show="errorMessage">{{errorMessage}}</div>
     <form role="form" ng-submit="save()">
@@ -58,8 +59,8 @@
                     <th>function</th>
                   </tr>
                   <tr ng-repeat="section in siteSetting.sections">
-                    <td><textarea class="form-control" ng-model="section.name" rows="2" required></textarea></td>
-                    <td><textarea class="form-control" ng-model="section.func" rows="2" required></textarea></td>
+                    <td><input type="text" class="form-control" ng-model="section.name" rows="1" required/></td>
+                    <td><textarea class="form-control" ng-model="section.func" rows="1" required></textarea></td>
                   </tr>
                 </table>
               </td>
